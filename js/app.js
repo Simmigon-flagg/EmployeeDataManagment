@@ -1,43 +1,64 @@
-//https://api.nytimes.com/svc/search/v2/articlesearch.json?q=$search&begin_date=$bDate&end_date=$eDate&limit=$responses&sort=newest&api_key=950ba3779f474d49aa1a605a55a6e151
+    // ========================================== START CODING BELOW!!
 
-var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?sort=newest";
-var tSearch = $("#search").val();
-var bDate = $("#bDate").val();
-var eDate = $("#eDate").val();
-var apikey = "&api_key=950ba3779f474d49aa1a605a55a6e151";
-var nResponse = $("number").val();
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCanlYIc7n-Wel8wDeaMxMzYtViVVCOwpI",
+      authDomain: "recent-user-with-push.firebaseapp.com",
+      databaseURL: "https://recent-user-with-push.firebaseio.com",
+      storageBucket: "recent-user-with-push.appspot.com",
+      messagingSenderId: "208476116054"
+    };
 
-if (tSearch !== ""){
-	queryURL += "&q=" + tSearch;
-}
-else{
-	alert("Please enter a search term");
-	return false;
-}
+    firebase.initializeApp(config);
 
-if (bDate){
-	queryURL += "&begin_date=" + bDate;
-}
+    // Create a variable to reference the database.
+    var database = firebase.database();
 
-if (eDate){
-	queryURL += "&end_date=" + bDate;	
-}
+    // Initial Values
+    var name = "";
+    var email = "";
+    var age = 0;
+    var comment = "";
 
-queryURL += apikey;
+    // Capture Button Click
+    $("#add-user").on("click", function(event) {
+      event.preventDefault();
 
-console.log(queryURL);
+      // Grabbed values from text boxes
+      name = $("#name-input").val().trim();
+      email = $("#email-input").val().trim();
+      age = $("#age-input").val().trim();
+      comment = $("#comment-input").val().trim();
 
-$.ajax({
-url: queryURL,
-method: "GET"
-}).then(function(response){
-	console.log(response);
-	results = response.docs;
-	
-	for(var i = 0; i < nResponse ; i++){
-	var newDiv = $("<div>");
-	var newNumber = $("<span>").addClass(".button");
-	newP.text(i+1);
-	
-}
-});
+      // Code for handling the push
+      database.ref().push({
+        name: name,
+        email: email,
+        age: age,
+        comment: comment,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+
+    });
+
+    // Firebase watcher .on("child_added"
+    database.ref().on("child_added", function(snapshot) {
+      // storing the snapshot.val() in a variable for convenience
+      var sv = snapshot.val();
+
+      // Console.loging the last user's data
+      console.log(sv.name);
+      console.log(sv.email);
+      console.log(sv.age);
+      console.log(sv.comment);
+
+      // Change the HTML to reflect
+      $("#name-display").text(sv.name);
+      $("#email-display").text(sv.email);
+      $("#age-display").text(sv.age);
+      $("#comment-display").text(sv.comment);
+
+      // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
