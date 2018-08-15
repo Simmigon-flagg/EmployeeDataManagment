@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
-    <script src="main.js"></script>
-    <script src="js/test.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+
+  <script src="main.js"></script>
+  <script src="js/app.js"></script>
+  <script src="database/config.js"></script>
 
 </head>
+
 <body>
-    <div class="jumbotron">
-        <h1 = "text-center"> Employee Data Management</h1>
-        <h4 = "text-center"> A Comprehensive Directory of Billable Hours</h4>
+  <div class="jumbotron">
+    <h1="text-center"> Employee Data Management</h1>
+      <h4="text-center"> A Comprehensive Directory of Billable Hours</h4>
   </div>
 
   <table class="table" id="emplist">
@@ -30,12 +38,12 @@
       </tr>
     </thead>
     <tbody id="empbody">
-     
+
     </tbody>
   </table>
 
 
-        <!--div class="col-lg-6">
+  <!--div class="col-lg-6">
                 <div class="card card-default">
                   <div class="card-heading">
                     <h3 class="card-title">Most Recent Member</h3>
@@ -49,37 +57,39 @@
                 </div>
               </div-->
 
-        <div class="col-lg-6">
-                <div class="card card-default">
-                  <div class="card-heading">
-                    <h3 class="card-title">New Member Sign-Up</h3>
-                  </div>
-                  <div class="card-body">
-        
-                    <!-- Sign-up Form (note the various input "types")-->
-                    <form role="form">
-                      <div class="form-group row">
-                        <label for="name-input">Employee Name:</label>
-                        <input class="form-control" id="name-input" type="text">
-                      </div>
-                      <div class="form-group row">
-                        <label for="email-input">Role</label>
-                        <input class="form-control" id="email-input" type="email">
-                      </div>
-                      <div class="form-group row">
-                        <label for="age-input">Start Date</label>
-                        <input class="form-control" id="age-input" type="number">
-                      </div>
-                      <div class="form-group row">
-                            <label for="age-input">Monthly Rate</label>
-                            <input class="form-control" id="rate-input" type="number">
-                          </div>
-                     
-                      <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-    
+  <div class="col-lg-6">
+    <div class="card card-default">
+      <div class="card-heading">
+        <h3 class="card-title">New Member Sign-Up</h3>
+      </div>
+      <div class="card-body">
+
+        <!-- Sign-up Form (note the various input "types")-->
+        <form role="form">
+          <div class="form-group row">
+            <label for="name-input">Employee Name:</label>
+            <input class="form-control" id="name-input" type="text">
+          </div>
+          <div class="form-group row">
+            <label for="name-input">Role</label>
+            <input class="form-control" id="role-input" type="text">
+          </div>
+
+          <div class="form-group row">
+            <label for="age-input">Start Date</label>
+            <input class="form-control" id="date-input" type="date">
+          </div>
+          <div class="form-group row">
+            <label for="age-input">Monthly Rate</label>
+            <input class="form-control" id="rate-input" type="number">
+          </div>
+
+          <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
