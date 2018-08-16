@@ -1,11 +1,11 @@
-// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCpeSR8na8AtM4YWRF84lfdZfozCNFILQs",
-    authDomain: "myfirebaseproject-b0fe7.firebaseapp.com",
-    databaseURL: "https://myfirebaseproject-b0fe7.firebaseio.com",
-    projectId: "myfirebaseproject-b0fe7",
-    storageBucket: "myfirebaseproject-b0fe7.appspot.com",
-    messagingSenderId: "504904408576"
+    apiKey: "AIzaSyDyCN1z5TkkN5TKmtWkR5hIIfFzlTgJFhc",
+    authDomain: "jovy-25c2d.firebaseapp.com",
+    databaseURL: "https://jovy-25c2d.firebaseio.com",
+    projectId: "jovy-25c2d",
+    storageBucket: "jovy-25c2d.appspot.com",
+    messagingSenderId: "52122675192"
 };
+// Initialize Firebase (YOUR OWN APP)
 firebase.initializeApp(config);
 var database = firebase.database();
