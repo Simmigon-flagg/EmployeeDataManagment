@@ -26,10 +26,10 @@ $("#add-user").on("click", function (event) {
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
-	$("#name-input").text("");
-	$("#role-input").text("");
-	$("#date-input").text("");
-	$("#rate-input").text("");
+	$("#name-input").val("");
+	$("#role-input").val("");
+	$("#date-input").val("");
+	$("#rate-input").val("");
 
 });
 
