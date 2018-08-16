@@ -35,24 +35,39 @@ $("#add-user").on("click", function (event) {
 
 
 // Firebase watcher .on("child_added"
-// database.ref().on("child_added", function (snapshot) {
-// 	// storing the snapshot.val() in a variable for convenience
-// 	var sv = snapshot.val();
-
-// 	// Console.loging the last user's data
-// 	console.log(sv.name);
-// 	console.log(sv.role);
-// 	console.log(sv.date);
-// 	console.log(sv.salary);
-
-// 	// Change the HTML to reflect
-// 	$("#name-display").text(sv.name);
-// 	$("#role-input").text(sv.role);
-// 	$("#date-inputy").text(sv.date);
-// 	$("#rate-input").text(sv.salary);
+database.ref().on("child_added", function (snapshot) {
+	// storing the snapshot.val() in a variable for convenience
+	var sv = snapshot.val();
 
 
-// 	// Handle the errors
-// }, function (errorObject) {
-// 	console.log("Errors handled: " + errorObject.code);
-// });
+	// Console.loging the last user's data
+	console.log(sv.name);
+	console.log(sv.role);
+	console.log(sv.date);
+	console.log(sv.salary);
+
+	// Change the HTML to reflect
+	// $("#name-display").text(sv.name);
+	// $("#role-input").text(sv.role);
+	// $("#date-inputy").text(sv.date);
+	// $("#rate-input").text(sv.salary);
+var namedisplay = $("<td>");
+var roledisplay = $("<td>");
+var startdisplay = $("<td>");
+var monthratedisplay = $("<td>");
+var monthworkeddisplay = $("<td>");
+var totalbilldisplay = $("<td>");
+
+namedisplay.text(sv.name);
+roledisplay.text(sv.role);
+startdisplay.text(sv.date);
+monthratedisplay.text(sv.salary);
+monthworkeddisplay.text("");
+totalbilldisplay.text("");
+
+$("#empbody").append(namedisplay);
+
+	// Handle the errors
+}, function (errorObject) {
+	console.log("Errors handled: " + errorObject.code);
+});
